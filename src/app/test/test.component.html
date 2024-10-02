@@ -1,0 +1,8 @@
+<img src="{{product.imgsrc}}" alt="">
+<p >{{product.quantity}}</p>
+<button (click)="acheter()" [style.color]="color">Acheter</button>
+<br>
+<input (input)="onColorChange($event)">
+<br>
+
+<input [(ngModel)]="color">

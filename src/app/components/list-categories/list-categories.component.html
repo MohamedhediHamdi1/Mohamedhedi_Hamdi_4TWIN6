@@ -1,0 +1,13 @@
+<div class="container">
+    <input type="text" [(ngModel)]="title" (change)="searchTitle()">
+    <div class="row">
+        <div class="col-md-4" style="margin-bottom: 20px;" *ngFor="let categorie of categories  | search:title">
+            <img src="{{categorie.image}}" alt="Grand électroménager" class="img-fluid h-50 w-75">
+            <h3>{{categorie.title | uppercase}}</h3>
+            <button class="btn btn-primary" [hidden]="!categorie.available" (click)="showAlert(categorie.description)">Voir produits</button>
+            <p *ngIf="!categorie.available">Categorie not found</p>
+        </div>
+    </div>
+</div>
+<p appHighlight>Survolez ce texte pour le surligner en jaune.</p>
+<button appHighlight>Survolez ce bouton pour le surligner.</button>
