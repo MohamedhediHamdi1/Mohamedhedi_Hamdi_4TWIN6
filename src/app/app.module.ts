@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { HighlightDirective } from './highlight.directive';
+import { PrixsearchPipe } from './pipes/prixsearch.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HighlightDirective } from './highlight.directive';
     HomeComponent,
     ListCategoriesComponent,
     SearchPipe,
-    HighlightDirective
+    HighlightDirective,
+    PrixsearchPipe
   ],
   imports: [
     BrowserModule,

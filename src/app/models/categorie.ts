@@ -4,4 +4,6 @@ export class Categorie{
     image!: string;
     description! : string;
     available! : boolean;
+    prix! : number;
+    nb_Likes! : number;
     }
