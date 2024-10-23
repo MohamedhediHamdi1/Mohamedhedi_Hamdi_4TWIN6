@@ -1,9 +1,0 @@
-export class Categorie{
-    id!:number;
-    title!: string;
-    image!: string;
-    description! : string;
-    available! : boolean;
-    prix! : number;
-    nb_Likes! : number;
-    }

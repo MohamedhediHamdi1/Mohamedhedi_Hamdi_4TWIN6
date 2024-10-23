@@ -8,11 +8,48 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
-import { SearchPipe } from './pipes/search.pipe';
-import { HighlightDirective } from './highlight.directive';
-import { PrixsearchPipe } from './pipes/prixsearch.pipe';
+import { ListcategoriesComponent } from './components/listcategories/listcategories.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SearchPricePipe } from './pipes/search-price.pipe';
+import { RouterModule, Routes } from '@angular/router';
+import { ProductComponent } from './features/product/product/product.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductModule } from './features/product/product.module';
+import { ProfileModule } from './features/profile/profile.module';
+import { AproposModule } from './features/apropos/apropos.module';
+import { ContactModule } from './features/contact/contact.module';
+import { FormCategoryComponent } from './components/form-category/form-category.component';
+import { MainUserComponentComponent } from './components/user/main-user-component/main-user-component.component';
+import { FormUserComponentComponent } from './components/user/form-user-component/form-user-component.component';
 
+
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'category/add', component: FormCategoryComponent },
+  { path: 'user', component: FormUserComponentComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'products', loadChildren:
+      () => import('./features/product/product.module')
+      .then(m => m.ProductModule)
+  },
+  {
+    path: 'contact', loadChildren:
+      () => import('./features/contact/contact.module')
+    .then(m=>m.ContactModule)
+  },
+  {
+    path: 'apropos', loadChildren:
+      () => import('./features/apropos/apropos.module')
+    .then(m=>m.AproposModule)
+  },
+  {
+    path: 'profile', loadChildren:
+      () => import('./features/profile/profile.module')
+    .then(m=>m.ProfileModule)
+  },
+  { path :'**' ,component:NotFoundComponent}
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,15 +57,18 @@ import { PrixsearchPipe } from './pipes/prixsearch.pipe';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    ListCategoriesComponent,
-    SearchPipe,
-    HighlightDirective,
-    PrixsearchPipe
+    ListcategoriesComponent,
+    FilterPipe,
+    NotFoundComponent,
+    FormCategoryComponent,
+    FormUserComponentComponent
+    
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
