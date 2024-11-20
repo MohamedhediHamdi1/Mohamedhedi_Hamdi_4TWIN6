@@ -19,14 +19,12 @@ import { ProfileModule } from './features/profile/profile.module';
 import { AproposModule } from './features/apropos/apropos.module';
 import { ContactModule } from './features/contact/contact.module';
 import { FormCategoryComponent } from './components/form-category/form-category.component';
-import { MainUserComponentComponent } from './components/user/main-user-component/main-user-component.component';
-import { FormUserComponentComponent } from './components/user/form-user-component/form-user-component.component';
-
+import { CardComponent } from './components/card/card.component';
+import { FormValidationComponent } from "./form-validation/form-validation.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'category/add', component: FormCategoryComponent },
-  { path: 'user', component: FormUserComponentComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
     path: 'products', loadChildren:
@@ -61,15 +59,16 @@ const routes: Routes = [
     FilterPipe,
     NotFoundComponent,
     FormCategoryComponent,
-    FormUserComponentComponent
-    
+  
   
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
-  ],
+    RouterModule.forRoot(routes),
+    CardComponent,
+    FormValidationComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })
